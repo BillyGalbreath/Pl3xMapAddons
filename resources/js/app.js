@@ -31,7 +31,7 @@ createInertiaApp({
             .use(ZiggyVue, Ziggy)
             .mount(el)
     },
-    title: title => `${title}|${appName}`
+    title: title => title ? `${title} - ${appName}` : `${appName}`
 });
 
 InertiaProgress.init({color: 'red'});

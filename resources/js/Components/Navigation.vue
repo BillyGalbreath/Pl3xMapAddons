@@ -13,21 +13,17 @@
                     <Moon class="moon"/>
                 </button>
             </li>
-            <span v-if="!loggedIn">
-                <li class="github">
-                    <a :href="route('login')" class='btn-github'>
-                        <GitHubLogo/>
-                        Sign in with GitHub
-                    </a>
-                </li>
-            </span>
-            <span v-if="loggedIn">
-                <li class="github">
-                    <Link :href="route('logout')" method="post" as="button" class='btn-github'>
-                        Log out
-                    </Link>
-                </li>
-            </span>
+            <li class="github" v-if="!loggedIn">
+                <a :href="route('login')" as="button" class='btn-github'>
+                    <GitHubLogo/>
+                    Sign in with GitHub
+                </a>
+            </li>
+            <li class="github" v-if="loggedIn">
+                <Link :href="route('logout')" method="post" as="button" class='btn-github'>
+                    Log out
+                </Link>
+            </li>
             <li class="hamburger">
                 <button @click="this.$emit('openSidebar')" aria-label="open sidebar">
                     <svg stroke="currentColor" viewBox="0 0 24 24">

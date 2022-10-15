@@ -1,6 +1,6 @@
 <template>
     <Head>
-        <title>Pl3xMap Addons</title>
+        <title></title>
         <meta type="description" content="Blazing fast live mapping solution for Paper and friends" head-key="description"/>
         <meta name="keywords" content="minecraft, map, dynamic, pl3x, pl3xmap"/>
         <meta name="author" content="BillyGalbreath">
