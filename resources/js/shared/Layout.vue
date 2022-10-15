@@ -60,5 +60,5 @@ import Nav from './Nav.vue';
 import {usePage} from "@inertiajs/inertia-vue3";
 import {computed} from "vue";
 
-const username = computed(() => usePage().props.value.auth.user.username);
+const username = computed(() => usePage().props.value.auth.user);
 </script>

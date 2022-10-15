@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8"/>
+    <title inertia>{{ config('app.name', 'Laravel') }}</title>
     <meta name="description" content="Blazing fast live mapping solution for Paper and friends"/>
     <meta name="keywords" content="minecraft, map, dynamic, pl3x, pl3xmap"/>
     <meta name="author" content="BillyGalbreath">
@@ -26,8 +27,12 @@
     <meta name="msapplication-TileColor" content="#aa3d1e"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta name="theme-color" content="#000000"/>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @routes
+    @vite('resources/js/app.js')
+    @inertiaHead
 </head>
-<body id="app" data-page="{{json_encode($page)}}">
+<!--<body id="app" data-page="{{json_encode($page)}}">-->
+<body>
+@inertia
 </body>
 </html>
