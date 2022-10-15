@@ -1,7 +1,3 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 * {
     box-sizing: border-box;
     margin: 0;
@@ -19,8 +15,28 @@ html {
 body {
     display: flex;
     flex-direction: column;
-    background: #f0f6fc;
-    color: #161b22;
     margin: 0;
+    background: var(--body-background);
+    color: var(--body-text);
     font-family: "Poppins", serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+.wrapper {
+    flex: 1 0 auto;
+}
+
+.content {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.error_404 {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
 }

@@ -3,6 +3,94 @@
 <head>
     <meta charset="utf-8"/>
     <title inertia>{{ config('app.name', 'Laravel') }}</title>
+    <style>
+        :root {
+            color-scheme: light;
+
+            --primary: #4286f5;
+            --error: #e7195a;
+
+            --darkest: #010409;
+            --darker: #0d1117;
+            --dark: #161b22;
+            --light: #21262d;
+            --lighter: #30363d;
+            --lightest: #8b949e;
+            --white: #c9d1d9;
+            --whiter: #f0f6fc;
+            --whitest: #ffffff;
+
+            --github-background: var(--light);
+            --github-text: var(--whiter);
+
+            --body-background: var(--whiter);
+            --body-text: var(--darker);
+
+            --sidebar-bg: rgba(255, 255, 255, 0.8);
+
+            --header-background: var(--whitest);
+            --header-text: var(--dark);
+            --header-link: var(--dark);
+
+            --footer-background: var(--dark);
+            --footer-text: var(--white);
+
+            --nav-btn-color: var(--primary);
+
+            --addon-background: var(--whitest);
+            --addon-border: var(--white);
+            --addon-header: var(--dark);
+            --addon-text: var(--light);
+        }
+
+        .darkmode {
+            color-scheme: dark;
+
+            --github-background: var(--light);
+            --github-text: var(--whiter);
+
+            --body-background: var(--darkest);
+            --body-text: var(--white);
+
+            --header-background: var(--dark);
+            --header-text: var(--whiter);
+            --header-link: var(--whiter);
+
+            --footer-background: var(--darker);
+            --footer-text: var(--white);
+
+            --nav-btn-color: var(--primary);
+
+            --addon-background: var(--darker);
+            --addon-border: var(--lighter);
+            --addon-header: var(--white);
+            --addon-text: var(--lightest);
+        }
+
+        body {
+            background: var(--body-background);
+            color: var(--body-text);
+        }
+    </style>
+    <script>
+        const enable = () => {
+            document.documentElement.classList.add('darkmode');
+            localStorage.setItem('darkmode', 'enabled');
+        }
+
+        const disable = () => {
+            document.documentElement.classList.remove('darkmode');
+            localStorage.removeItem('darkmode');
+        }
+
+        const isEnabled = () => {
+            return localStorage.getItem('darkmode');
+        }
+
+        if (isEnabled()) {
+            enable();
+        }
+    </script>
     <meta name="description" content="Blazing fast live mapping solution for Paper and friends"/>
     <meta name="keywords" content="minecraft, map, dynamic, pl3x, pl3xmap"/>
     <meta name="author" content="BillyGalbreath">
@@ -31,8 +119,7 @@
     @vite('resources/js/app.js')
     @inertiaHead
 </head>
-<!--<body id="app" data-page="{{json_encode($page)}}">-->
-<body>
+<body id="app" data-page="{{json_encode($page)}}">
 @inertia
 </body>
 </html>

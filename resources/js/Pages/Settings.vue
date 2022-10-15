@@ -1,8 +1,6 @@
 <template>
     <div>
-        <Head>
-            <title>Settings</title>
-        </Head>
-        <h1>Settings</h1>
+        <Head title="Settings"/>
+        <p>Settings</p>
     </div>
 </template>

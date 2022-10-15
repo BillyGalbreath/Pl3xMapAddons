@@ -12,7 +12,16 @@ class WebController extends Controller {
      * @return Response
      */
     public function index() {
-        return Inertia::render('Welcome');
+        return Inertia::render('Index');
+    }
+
+    /**
+     * Display the user contact view.
+     *
+     * @return Response
+     */
+    public function contact() {
+        return Inertia::render('Contact');
     }
 
     /**

@@ -1,25 +1,45 @@
-<script setup>
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-</script>
-
 <template>
-    <Head title="Dashboard"/>
+    <div>
+        <Head title="Dashboard"/>
 
-    <AuthenticatedLayout>
-        <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Dashboard
-            </h2>
-        </template>
-
-        <div class="py-12">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                    <div class="p-6 bg-white border-b border-gray-200">
-                        You're logged in!
-                    </div>
-                </div>
+        <div class="tokens">
+            <h5>Tokens</h5>
+            <div class="token">
+                <span>Name</span>
+                <button>Delete</button>
+            </div>
+            <div class="token">
+                <span>Name</span>
+                <button>Delete</button>
+            </div>
+            <div class="token">
+                <span>Name</span>
+                <button>Delete</button>
             </div>
         </div>
-    </AuthenticatedLayout>
+    </div>
 </template>
+
+<style>
+.tokens {
+    background-color: #ffffff;
+    background: var(--addon-background);
+    color: var(--addon-text);
+    border: 1px solid var(--addon-border);
+    border-radius: 4px;
+    margin: 20px auto;
+    padding: 20px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.token {
+    background-color: #efefef;
+    background: var(--addon-background);
+    color: var(--addon-text);
+    border: 1px solid var(--addon-border);
+    border-radius: 4px;
+    margin: 20px auto;
+    padding: 20px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.05);
+}
+</style>

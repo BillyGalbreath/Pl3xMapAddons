@@ -1,8 +1,5 @@
 <template>
     <div>
-        <Head>
-            <title>Home</title>
-        </Head>
-        <h1>Hello</h1>
+        <p>Home page...</p>
     </div>
 </template>

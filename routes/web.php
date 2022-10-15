@@ -1,7 +1,7 @@
 <?php
 
+use App\Http\Controllers\AddonsController;
 use App\Http\Controllers\Auth\AuthController;
-use App\Http\Controllers\Users\UsersController;
 use App\Http\Controllers\WebController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,8 +16,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [WebController::class, 'index']);
-
+Route::get('/', [WebController::class, 'index'])->name('index');
+Route::get('/contact', [WebController::class, 'contact'])->name('contact');
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [WebController::class, 'dashboard'])->name('dashboard');
     Route::get('/settings', [WebController::class, 'settings'])->name('settings');
@@ -25,17 +25,15 @@ Route::middleware('auth')->group(function () {
 
 // auth
 Route::middleware('guest')->group(function () {
-    Route::get('/auth/redirect', [AuthController::class, 'login'])->name('login');
+    Route::get('/auth/redirect', [AuthController::class, 'redirect'])->name('login');
     Route::get('/auth/callback', [AuthController::class, 'callback']);
 });
-
 Route::middleware('auth')->group(function () {
     Route::post('/auth/logout', [AuthController::class, 'logout'])->name('logout');
 });
 
-// users
+// addons
+Route::get('/addons', [AddonsController::class, 'list'])->name('addons');
 Route::middleware('auth')->group(function () {
-    Route::get('/users', [UsersController::class, 'index']);
-    Route::get('/users/create', [UsersController::class, 'create']);
-    Route::post('/users', [UsersController::class, 'post']);
+    Route::get('/addons/{slug}', [AddonsController::class, 'single'])->name('addon');
 });

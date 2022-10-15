@@ -15,7 +15,7 @@ class AuthController extends Controller {
      *
      * @return RedirectResponse
      */
-    public function login() {
+    public function redirect() {
         return Socialite::driver('github')->redirect();
     }
 
@@ -47,7 +47,7 @@ class AuthController extends Controller {
      * @return RedirectResponse
      */
     public function logout(Request $request) {
-        Auth::guard('web')->logout();
+        Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
         return redirect('/');
