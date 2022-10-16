@@ -16,24 +16,28 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [WebController::class, 'index'])->name('index');
-Route::get('/contact', [WebController::class, 'contact'])->name('contact');
-Route::middleware('auth')->group(function () {
-    Route::get('/dashboard', [WebController::class, 'dashboard'])->name('dashboard');
-    Route::get('/settings', [WebController::class, 'settings'])->name('settings');
+Route::controller(WebController::class)->group(function () {
+    Route::get('/', 'index')->name('index');
+    Route::get('/contact', 'contact')->name('contact');
+    Route::middleware('auth')->group(function () {
+        Route::get('/dashboard', 'dashboard')->name('dashboard');
+        Route::get('/settings', 'settings')->name('settings');
+    });
 });
 
-// auth
-Route::middleware('guest')->group(function () {
-    Route::get('/auth/redirect', [AuthController::class, 'redirect'])->name('login');
-    Route::get('/auth/callback', [AuthController::class, 'callback']);
-});
-Route::middleware('auth')->group(function () {
-    Route::post('/auth/logout', [AuthController::class, 'logout'])->name('logout');
+Route::controller(AuthController::class)->group(function () {
+    Route::middleware('guest')->group(function () {
+        Route::get('/auth/redirect', 'redirect')->name('login');
+        Route::get('/auth/callback', 'callback');
+    });
+    Route::middleware('auth')->group(function () {
+        Route::post('/auth/logout', 'logout')->name('logout');
+    });
 });
 
-// addons
-Route::get('/addons', [AddonsController::class, 'list'])->name('addons');
-Route::middleware('auth')->group(function () {
-    Route::get('/addons/{slug}', [AddonsController::class, 'single'])->name('addon');
+Route::controller(AddonsController::class)->group(function () {
+    Route::get('/addons', 'list')->name('addons');
+    Route::middleware('auth')->group(function () {
+        Route::get('/addons/{slug}', 'single')->name('addon');
+    });
 });

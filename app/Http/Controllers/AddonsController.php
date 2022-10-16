@@ -11,7 +11,7 @@ class AddonsController extends Controller {
      *
      * @return Response
      */
-    public function list() {
+    public function list(): Response {
         return Inertia::render('Addons');
     }
 
@@ -20,7 +20,7 @@ class AddonsController extends Controller {
      *
      * @return Response
      */
-    public function single() {
+    public function single(): Response {
         return Inertia::render('Addon');
     }
 }

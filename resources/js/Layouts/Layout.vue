@@ -17,12 +17,13 @@
         <meta name="twitter:title" content="{{ config('app.name') }}">
         <meta name="twitter:description" content="Blazing fast live mapping solution for Paper and friends">
         <meta name="twitter:image" content="https://raw.githubusercontent.com/BillyGalbreath/Pl3xMap/v2/webmap/public/images/og.png">
+        <meta name="darkreader-lock"/>
     </Head>
-    <Sidebar @closeSidebar="showSidebar=false" :showSidebar="showSidebar"/>
+    <Drawer @closeDrawer="showDrawer=false" :showDrawer="showDrawer"/>
     <header>
         <div class="content">
             <Logo/>
-            <Navigation @openSidebar="showSidebar=true"/>
+            <Navigation @openDrawer="showDrawer=true"/>
         </div>
     </header>
     <div class="wrapper">
@@ -56,14 +57,24 @@
     src: url('/fonts/poppins.woff2') format('woff2');
     unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
-</style>
 
-<style scoped>
 .animate,
 .animate * {
     transition: 0.2s ease all;
 }
 
+.container {
+    display: flex;
+}
+
+@media (max-width: 800px) {
+    .container {
+        display: block;
+    }
+}
+</style>
+
+<style scoped>
 header {
     background: var(--header-background);
     color: var(--header-text);
@@ -80,11 +91,6 @@ header .content {
     display: flex;
     align-items: center;
     justify-content: space-between;
-}
-
-header a,
-header a:visited {
-    color: var(--header-text);
 }
 
 footer {
@@ -105,6 +111,8 @@ footer ul li {
 }
 
 footer .content {
+    min-width: 300px;
+    margin: 20px auto;
     padding: 0;
 }
 
@@ -135,12 +143,12 @@ import {usePage} from "@inertiajs/inertia-vue3";
 import {computed} from "vue";
 import Logo from "../Components/Logo.vue";
 import Navigation from "../Components/Navigation.vue";
-import Sidebar from "../Components/Sidebar.vue";
+import Drawer from "../Components/Drawer.vue";
 
 const username = computed(() => usePage().props.value.auth.user.username);
 
 defineProps({
     darkMode: Boolean,
-    showSidebar: Boolean
+    showDrawer: Boolean
 });
 </script>

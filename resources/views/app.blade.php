@@ -26,7 +26,9 @@
             --body-background: var(--whiter);
             --body-text: var(--darker);
 
-            --sidebar-bg: rgba(255, 255, 255, 0.8);
+            --drawer-background: rgba(255, 255, 255, 0.8);
+            --drawer-text: var(--darker);
+            --drawer-border: var(--white);
 
             --header-background: var(--whitest);
             --header-text: var(--dark);
@@ -36,6 +38,10 @@
             --footer-text: var(--white);
 
             --nav-btn-color: var(--primary);
+
+            --sidebar-background: var(--whitest);
+            --sidebar-border: var(--white);
+            --sidebar-text: var(--light);
 
             --addon-background: var(--whitest);
             --addon-border: var(--white);
@@ -52,6 +58,10 @@
             --body-background: var(--darkest);
             --body-text: var(--white);
 
+            --drawer-background: rgba(0, 0, 0, 0.8);
+            --drawer-text: var(--whiter);
+            --drawer-border: var(--lighter);
+
             --header-background: var(--dark);
             --header-text: var(--whiter);
             --header-link: var(--whiter);
@@ -60,6 +70,10 @@
             --footer-text: var(--white);
 
             --nav-btn-color: var(--primary);
+
+            --sidebar-background: var(--darker);
+            --sidebar-border: var(--lighter);
+            --sidebar-text: var(--lightest);
 
             --addon-background: var(--darker);
             --addon-border: var(--lighter);
@@ -80,11 +94,11 @@
 
         const disable = () => {
             document.documentElement.classList.remove('darkmode');
-            localStorage.removeItem('darkmode');
+            localStorage.setItem('darkmode', 'disabled');
         }
 
         const isEnabled = () => {
-            return localStorage.getItem('darkmode');
+            return localStorage.getItem('darkmode') !== 'disabled';
         }
 
         if (isEnabled()) {
@@ -115,6 +129,7 @@
     <meta name="msapplication-TileColor" content="#aa3d1e"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta name="theme-color" content="#000000"/>
+    <meta name="color-scheme" content="light dark">
     @routes
     @vite('resources/js/app.js')
     @inertiaHead

@@ -11,12 +11,12 @@ a:visited {
     text-decoration: none;
 }
 
-.active {
+a.active {
     font-weight: bold;
 }
 
 a:hover,
-.active {
+a.active {
     text-decoration: underline;
 }
 </style>

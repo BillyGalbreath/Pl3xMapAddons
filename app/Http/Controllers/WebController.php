@@ -11,7 +11,7 @@ class WebController extends Controller {
      *
      * @return Response
      */
-    public function index() {
+    public function index(): Response {
         return Inertia::render('Index');
     }
 
@@ -20,7 +20,7 @@ class WebController extends Controller {
      *
      * @return Response
      */
-    public function contact() {
+    public function contact(): Response {
         return Inertia::render('Contact');
     }
 
@@ -29,7 +29,7 @@ class WebController extends Controller {
      *
      * @return Response
      */
-    public function dashboard() {
+    public function dashboard(): Response {
         return Inertia::render('Dashboard');
     }
 
@@ -38,7 +38,7 @@ class WebController extends Controller {
      *
      * @return Response
      */
-    public function settings() {
+    public function settings(): Response {
         return Inertia::render('Settings');
     }
 }

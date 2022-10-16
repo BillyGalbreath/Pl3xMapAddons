@@ -1,5 +1,5 @@
 <template>
-    <div class="pagination">
+    <div>
         <Component
             :is="link.url ? 'Link' : 'span'"
             v-for="link in links"
@@ -11,16 +11,16 @@
 </template>
 
 <style scoped>
-.pagination a,
-.pagination span {
+a,
+span {
     padding: 0 5px;
 }
 
-.pagination a.active {
+a.active {
     font-weight: bold;
 }
 
-.pagination .disabled {
+.disabled {
     color: #555555;
 }
 </style>

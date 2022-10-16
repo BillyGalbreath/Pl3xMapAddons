@@ -15,7 +15,7 @@ class AuthController extends Controller {
      *
      * @return RedirectResponse
      */
-    public function redirect() {
+    public function redirect(): RedirectResponse {
         return Socialite::driver('github')->redirect();
     }
 
@@ -24,7 +24,7 @@ class AuthController extends Controller {
      *
      * @return RedirectResponse
      */
-    public function callback() {
+    public function callback(): RedirectResponse {
         $github = Socialite::driver('github')->user();
         $user = User::updateOrCreate([
             'github_id' => $github->id
@@ -37,7 +37,7 @@ class AuthController extends Controller {
             'github_refresh_token' => $github->refreshToken
         ]);
         Auth::login($user);
-        return redirect(route('dashboard'));
+        return to_route('dashboard');
     }
 
     /**
@@ -46,10 +46,10 @@ class AuthController extends Controller {
      * @param Request $request
      * @return RedirectResponse
      */
-    public function logout(Request $request) {
+    public function logout(Request $request): RedirectResponse {
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect('/');
+        return to_route('index');
     }
 }

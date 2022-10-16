@@ -1,27 +1,37 @@
 <template>
-    <div>
-        <Head title="Addons"/>
-        <div class="addon-details">
-            <h2>Title</h2>
-            <p><strong>Author: </strong>Author</p>
-            <p><strong>Description: </strong>Short Description</p>
-            <p>Created At</p>
-        </div>
-        <div class="addon-details">
-            <h2>Title</h2>
-            <p><strong>Author: </strong>Author</p>
-            <p><strong>Description: </strong>Short Description</p>
-            <p>Created At</p>
-        </div>
-        <div class="addon-details">
-            <h2>Title</h2>
-            <p><strong>Author: </strong>Author</p>
-            <p><strong>Description: </strong>Short Description</p>
-            <p>Created At</p>
+    <Head title="Addons"/>
+    <div class="container">
+        <Sidebar/>
+        <div class="page">
+            <Search/>
+            <div class="addon-details">
+                <h2>Title</h2>
+                <p><strong>Author: </strong>Author</p>
+                <p><strong>Description: </strong>Short Description</p>
+                <p>Created At</p>
+            </div>
+            <div class="addon-details">
+                <h2>Title</h2>
+                <p><strong>Author: </strong>Author</p>
+                <p><strong>Description: </strong>Short Description</p>
+                <p>Created At</p>
+            </div>
+            <div class="addon-details">
+                <h2>Title</h2>
+                <p><strong>Author: </strong>Author</p>
+                <p><strong>Description: </strong>Short Description</p>
+                <p>Created At</p>
+            </div>
         </div>
     </div>
 </template>
+
 <style>
+.page {
+    width: 100%;
+    min-width: 300px;
+}
+
 .addon-details {
     background: var(--addon-background);
     color: var(--addon-text);
@@ -45,3 +55,8 @@
     color: var(--addon-text);
 }
 </style>
+
+<script setup>
+import Sidebar from "../Components/Sidebar.vue";
+import Search from "../Components/Search.vue";
+</script>

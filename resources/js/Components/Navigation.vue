@@ -14,18 +14,20 @@
                 </button>
             </li>
             <li class="github" v-if="!loggedIn">
-                <a :href="route('login')" as="button" class='btn-github'>
-                    <GitHubLogo/>
-                    Sign in with GitHub
+                <a :href="route('login')">
+                    <button class='btn-github'>
+                        <GitHubLogo/>
+                        <span>Sign in with GitHub</span>
+                    </button>
                 </a>
             </li>
             <li class="github" v-if="loggedIn">
                 <Link :href="route('logout')" method="post" as="button" class='btn-github'>
-                    Log out
+                    <span>Log out</span>
                 </Link>
             </li>
             <li class="hamburger">
-                <button @click="this.$emit('openSidebar')" aria-label="open sidebar">
+                <button @click="this.$emit('openDrawer')" aria-label="open drawer">
                     <svg stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
                     </svg>
@@ -36,7 +38,7 @@
 </template>
 
 <style scoped>
-nav ul {
+ul {
     display: flex;
     align-items: center;
     list-style-type: none;
@@ -45,26 +47,27 @@ nav ul {
     font-size: 0;
 }
 
-nav li {
+li {
     display: flex;
     align-items: center;
     padding: 0 10px;
     font-size: 1rem;
 }
 
-nav li:first-child {
+li:first-child {
     padding-left: 0;
 }
 
-nav .github {
+.github {
     padding-right: 0;
 }
 
-nav .btn-github {
+.btn-github {
     display: flex;
     align-items: center;
     padding: 0 10px 0 5px;
     font-family: "Poppins", sans-serif;
+    line-height: 26px;
     color: var(--github-text);
     background-color: var(--github-background);
     stroke: var(--github-text);
@@ -75,26 +78,30 @@ nav .btn-github {
     cursor: pointer;
 }
 
-nav .btn-github svg {
-    padding: 3px 10px 4px 0;
+.btn-github span {
+    margin-left: 5px;
+}
+
+.btn-github svg {
+    padding: 3px 5px 4px 0;
     height: 26px;
 }
 
-nav .btn-github:focus,
-nav .btn-github:hover,
-nav .btn-github:active {
+.btn-github:focus,
+.btn-github:hover,
+.btn-github:active {
     background-color: #2b2b2b;
     border-color: #2b2b2b;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
 
-nav .btn-github:active:hover {
+.btn-github:active:hover {
     background-color: #191919;
     border-color: #191919;
     box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
-nav .btn-logout {
+.btn-logout {
     background: #ffffff;
     color: var(--nav-btn-color);
     border: 2px solid var(--primary);
@@ -106,79 +113,89 @@ nav .btn-logout {
     margin-left: 20px;
 }
 
-nav img.avatar {
+.avatar {
     width: 32px;
     height: 32px;
     border-radius: 16px;
     margin-right: 10px;
 }
 
-nav #dark-mode-toggle {
+#dark-mode-toggle {
     display: flex;
     align-items: center;
     background-color: transparent;
     border: 0;
-    font-size: 20px;
+    font-size: 0;
 }
 
-nav .moon,
-nav .sun {
+#dark-mode-toggle svg {
+    transition: 0.5s ease width;
+}
+
+.moon,
+.sun {
     height: 26px;
     cursor: pointer;
     fill: black;
 }
 
-html.darkmode nav .moon,
-html.darkmode nav .sun {
+html.darkmode .moon,
+html.darkmode .sun {
     fill: white;
 }
 
-nav .moon,
-html.darkmode nav .sun {
+.moon,
+html.darkmode .sun {
     width: 26px;
 }
 
-html.darkmode nav .moon,
-nav .sun {
+html.darkmode .moon,
+.sun {
     width: 0;
 }
 
-nav .hamburger {
+li.hamburger {
     padding: 0;
 }
 
-nav .hamburger button {
+li.hamburger button {
     width: 0;
     height: 28px;
     background: transparent;
     fill: var(--darkest);
     border: 0;
+    cursor: pointer;
+}
+
+li.hamburger button svg {
+    width: 100%;
+    height: 100%;
 }
 
 @media (max-width: 800px) {
-    nav li {
+    li {
         font-size: 0;
         padding: 0;
     }
 
-    html.darkmode nav .sun,
-    nav .moon {
+    html.darkmode .sun,
+    .moon {
         width: 0;
     }
 
-    nav .btn-github {
+    .btn-github {
         font-size: 0;
         padding: 0;
         visibility: hidden;
     }
 
-    nav .btn-github svg {
+    svg {
         padding: 0;
         width: 0;
         height: 0;
     }
 
-    nav .hamburger button {
+    li.hamburger button {
         width: 28px;
     }
 }
@@ -192,26 +209,8 @@ import {computed} from "vue";
 import {usePage} from "@inertiajs/inertia-vue3";
 
 const loggedIn = computed(() => {
-    const user = usePage().props.value.auth.user;
-    return user != undefined;
+    return usePage().props.value.auth.user;
 });
-
-const doLogin = () => {
-    new Promise((resolve, reject) => {
-        axios
-            .get('/api/login')
-            .then((response) => {
-                resolve(response);
-            })
-            .catch((error) => {
-                reject(error);
-            });
-    }).then((response) => {
-        if (response.data.url) {
-            window.location.href = response.data.url;
-        }
-    });
-}
 
 setTimeout(() => {
     document.documentElement.classList.add('animate');
@@ -224,5 +223,4 @@ setTimeout(() => {
             }
         });
 }, 100);
-
 </script>

@@ -1,13 +1,12 @@
 <template>
     <div>
-        sidebar \o/
+        search
     </div>
 </template>
 
 <style scoped>
 div {
-    min-width: 250px;
-    margin: 20px 20px 20px 0;
+    margin: 20px 0;
     padding: 20px;
     background: var(--sidebar-background);
     color: var(--sidebar-text);

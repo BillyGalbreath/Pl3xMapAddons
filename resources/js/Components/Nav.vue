@@ -15,16 +15,16 @@
 </template>
 
 <style scoped>
-nav ul {
+ul {
     list-style-type: none;
     display: flex;
 }
 
-nav ul li {
+li {
     margin-left: 15px;
 }
 
-nav ul li:first-child {
+li:first-child {
     margin-left: 0;
 }
 </style>

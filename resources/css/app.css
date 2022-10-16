@@ -21,7 +21,9 @@ body {
     font-family: "Poppins", serif;
 }
 
-a {
+a,
+a:visited {
+    color: var(--header-text);
     text-decoration: none;
 }
 

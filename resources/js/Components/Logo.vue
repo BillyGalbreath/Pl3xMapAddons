@@ -1,5 +1,5 @@
 <template>
-    <Link :href="route('index')" class="logo">
+    <Link :href="route('index')">
         <svg viewBox="0 0 272.4 271.69" xmlns="http://www.w3.org/2000/svg">
             <title>Pl3x Logo</title>
             <path d="m126.02 0.35272c-54.6 4.1-101.8 40.7-119.1 92.5-7.3 21.9-8.8 44.4-4.6 69.6l0.71616 3.7638c7e-3 0.046 0.0322 0.0845 0.066 0.0889 0.63634 0.0211 4.5178-0.0527 13.118-0.0527 6.9 0 12.5-0.2 12.5-0.4 0-0.3-0.7-3.8-1.6-7.8-2.1-9.1-2.4-33.7-0.5-42.3 8.7-41.1 36.3-72.6 74.9-85.5 9.3-3.1 26.5-6 35.3-6 6.9 0 23.3 2.5 30.7 4.6 17.9 5.2 35.9 16.2 49 29.8 21.2 22.1 31.2 47 31.2 77.6 0 30.4-11 57-32.6 78.4-40.4 40.1-103.8 43.4-148.6 7.8-8.6-6.9-15.2-14-22.2-24l-5-7.2h-27.6l3.9 7.7c12.1 24 34.4 45.9 59.7 58.6 31.1 15.6 69.2 18.5 102.7 7.6 34.6-11.3 63.7-36.1 80-68.5 22.9-45.5 18.2-99.8-12.3-141.6-26.7-36.7-73.7-58.1-119.7-54.7z"/>
@@ -9,30 +9,30 @@
     </Link>
 </template>
 
-<style>
-.logo {
+<style scoped>
+a {
     display: flex;
     align-items: center;
     color: var(--header-link);
     text-decoration: none;
 }
 
-html.darkmode .logo {
+html.darkmode svg {
     fill: white;
 }
 
-.logo svg {
+svg {
     width: 50px;
 }
 
-.logo h1 {
+h1 {
     display: inline-block;
     margin-left: 10px;
     font-size: 2rem;
 }
 
 @media (max-width: 500px) {
-    header .logo h1 {
+    h1 {
         font-size: 0;
     }
 }
