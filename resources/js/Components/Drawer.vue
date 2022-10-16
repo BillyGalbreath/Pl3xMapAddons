@@ -17,7 +17,6 @@ div {
     height: 100%;
     background-color: var(--drawer-background);
     color: var(--drawer-text);
-    border-right: 1px solid var(--drawer-border);
     z-index: 9999;
 }
 
