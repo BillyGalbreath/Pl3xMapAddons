@@ -29,7 +29,7 @@ h1 {
 
 .animate img,
 .animate h1 {
-    transition: var(--fast) color, var(--fast) filter;
+    transition: var(--fast);
 }
 
 @media (max-width: 500px) {

@@ -38,7 +38,7 @@ div {
 }
 
 .animate div {
-    transition: var(--fast) background-color, var(--fast) border-color, var(--fast) color;
+    transition: var(--fast);
 }
 
 p {
@@ -57,4 +57,5 @@ p:first-child {
 }
 </style>
 <script setup>
-import Checkbox from "./Checkbox.vue";</script>
+import Checkbox from "./Checkbox.vue";
+</script>

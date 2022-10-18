@@ -47,7 +47,11 @@
 }
 
 .animate .addon-details {
-    transition: var(--fast) background-color, var(--fast) border-color;
+    transition: var(--fast-bg);
+}
+.animate .addon-details p,
+.animate .addon-details h2 {
+    transition: var(--fast);
 }
 
 .addon-details img {
@@ -71,7 +75,7 @@
 
 .animate .addon-details h2,
 .animate .addon-details p{
-    transition: var(--fast) color;
+    transition: var(--fast);
 }
 </style>
 

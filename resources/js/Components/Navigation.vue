@@ -9,14 +9,14 @@
             </li>
             <li>
                 <button id="dark-mode-toggle" aria-label="toggle dark mode">
-                    <Sun class="sun"/>
-                    <Moon class="moon"/>
+                    <img src="/images/sun.svg" alt="Light Mode" class="sun"/>
+                    <img src="/images/moon.svg" alt="Dark Mode" class="moon"/>
                 </button>
             </li>
             <li class="github" v-if="!loggedIn">
                 <a :href="route('login')">
                     <button class='btn-github'>
-                        <GitHubLogo/>
+                        <img src="/images/github.svg" alt="GitHub Logo"/>
                         <span>Sign in with GitHub</span>
                     </button>
                 </a>
@@ -28,9 +28,7 @@
             </li>
             <li class="hamburger">
                 <button @click="this.$emit('openDrawer')" aria-label="open drawer">
-                    <svg stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-                    </svg>
+                    <img src="/images/hamburger.svg" alt="Open Drawer"/>
                 </button>
             </li>
         </ul>
@@ -55,7 +53,7 @@ li {
 
 .animate li a,
 .animate li button {
-    transition: var(--fast) color;
+    transition: var(--fast);
 }
 
 li:first-child {
@@ -75,7 +73,6 @@ li:first-child {
     color: var(--github-text);
     background-color: var(--github-background);
     stroke: var(--github-text);
-    fill: var(--github-text);
     border: 1px solid var(--lighter);
     border-radius: 4px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25);
@@ -86,9 +83,10 @@ li:first-child {
     margin-left: 5px;
 }
 
-.btn-github svg {
+.btn-github img {
     padding: 3px 5px 4px 0;
     height: 26px;
+    filter: invert();
 }
 
 .btn-github:focus,
@@ -132,24 +130,19 @@ li:first-child {
     font-size: 0;
 }
 
-#dark-mode-toggle svg {
-    transition: 0.5s ease width;
-}
-
-.animate #dark-mode-toggle svg {
-    transition: var(--fast) fill, 0.5s ease-in-out width;
+#dark-mode-toggle img {
+    transition: var(--fast);
 }
 
 .moon,
 .sun {
     height: 26px;
     cursor: pointer;
-    fill: black;
 }
 
 html.darkmode .moon,
 html.darkmode .sun {
-    fill: white;
+    filter: invert();
 }
 
 .moon,
@@ -170,14 +163,17 @@ li.hamburger button {
     width: 0;
     height: 28px;
     background: transparent;
-    fill: var(--darkest);
     border: 0;
     cursor: pointer;
 }
 
-li.hamburger button svg {
+li.hamburger button img {
     width: 100%;
     height: 100%;
+}
+
+.darkmode li.hamburger button img {
+    filter: invert();
 }
 
 @media (max-width: 800px) {
@@ -197,7 +193,7 @@ li.hamburger button svg {
         visibility: hidden;
     }
 
-    svg {
+    img {
         padding: 0;
         width: 0;
         height: 0;
@@ -210,9 +206,6 @@ li.hamburger button svg {
 </style>
 
 <script setup>
-import GitHubLogo from "./GitHubLogo.vue";
-import Moon from "./Moon.vue";
-import Sun from "./Sun.vue";
 import {computed} from "vue";
 import {usePage} from "@inertiajs/inertia-vue3";
 

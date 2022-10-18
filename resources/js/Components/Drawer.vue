@@ -1,9 +1,7 @@
 <template>
     <div :class="{open:showDrawer}">
         <button @click="this.$emit('closeDrawer')" aria-label="close drawer">
-            <svg stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-            </svg>
+            <img src="/images/close.svg" alt="Close"/>
         </button>
     </div>
 </template>
@@ -18,6 +16,7 @@ div {
     background-color: var(--drawer-background);
     color: var(--drawer-text);
     z-index: 9999;
+    transition: var(--fast);
 }
 
 button {
@@ -32,9 +31,12 @@ button {
     cursor: pointer;
 }
 
-svg {
-    fill: var(--drawer-text);
-    stroke: var(--drawer-text);
+img {
+    padding: 2px;
+}
+
+.darkmode img {
+    filter: invert();
 }
 
 .open {

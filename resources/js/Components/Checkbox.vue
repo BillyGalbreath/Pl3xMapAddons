@@ -7,7 +7,6 @@
 </template>
 
 <style scoped>
-/* Customize the label (the container) */
 label {
     display: flex;
     position: relative;
@@ -19,7 +18,6 @@ label {
     user-select: none;
 }
 
-/* Hide the browser's default checkbox */
 label input {
     position: absolute;
     opacity: 0;
@@ -28,7 +26,6 @@ label input {
     width: 0;
 }
 
-/* Create a custom checkbox */
 span {
     position: absolute;
     top: 3px;
@@ -39,29 +36,24 @@ span {
     border-radius: 4px;
 }
 
-/* On mouse-over, add a grey background color */
 label:hover input ~ span {
     background-color: var(--lightest);
 }
 
-/* When the checkbox is checked, add a blue background */
 label input:checked ~ span {
     background-color: var(--primary);
 }
 
-/* Create the checkmark/indicator (hidden when not checked) */
 span:after {
     content: "";
     position: absolute;
     display: none;
 }
 
-/* Show the checkmark when checked */
 label input:checked ~ span:after {
     display: block;
 }
 
-/* Style the checkmark/indicator */
 label span:after {
     left: 5px;
     top: 2px;

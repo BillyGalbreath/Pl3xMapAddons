@@ -7,7 +7,8 @@
         :root {
             color-scheme: light;
 
-            --fast: 0.2s ease-in-out;
+            --fast: 0.2s ease-in-out all;
+            --fast-bg: 0.2s ease-in-out background-color, 0.2s ease-in-out border-color;
 
             --primary: #4286f5;
             --error: #e7195a;
@@ -89,7 +90,7 @@
         }
 
         .animate body {
-            transition: var(--fast) background-color;
+            transition: var(--fast-bg);
         }
     </style>
     <script>

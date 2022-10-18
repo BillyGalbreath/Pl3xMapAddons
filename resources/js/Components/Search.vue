@@ -16,7 +16,7 @@ div {
 }
 
 .animate div {
-    transition: var(--fast) background-color, var(--fast) border-color, var(--fast) color;
+    transition: var(--fast);
 }
 
 @media (max-width: 800px) {

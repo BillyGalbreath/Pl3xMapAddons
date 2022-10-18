@@ -90,7 +90,7 @@ header {
 
 .animate header,
 .animate footer {
-    transition: var(--fast) background-color, var(--fast) border-color, var(--fast) color;
+    transition: var(--fast);
 }
 
 html.darkmode header {
