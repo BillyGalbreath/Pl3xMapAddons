@@ -53,6 +53,11 @@ li {
     font-size: 1rem;
 }
 
+.animate li a,
+.animate li button {
+    transition: var(--fast) color;
+}
+
 li:first-child {
     padding-left: 0;
 }
@@ -129,6 +134,10 @@ li:first-child {
 
 #dark-mode-toggle svg {
     transition: 0.5s ease width;
+}
+
+.animate #dark-mode-toggle svg {
+    transition: var(--fast) fill, 0.5s ease-in-out width;
 }
 
 .moon,

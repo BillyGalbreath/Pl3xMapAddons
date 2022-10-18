@@ -1,6 +1,6 @@
 <template>
     <div>
-        search
+        <p>Search</p>
     </div>
 </template>
 
@@ -13,6 +13,10 @@ div {
     border: 1px solid var(--sidebar-border);
     border-radius: 4px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.animate div {
+    transition: var(--fast) background-color, var(--fast) border-color, var(--fast) color;
 }
 
 @media (max-width: 800px) {

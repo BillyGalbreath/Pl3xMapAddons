@@ -7,6 +7,8 @@
         :root {
             color-scheme: light;
 
+            --fast: 0.2s ease-in-out;
+
             --primary: #4286f5;
             --error: #e7195a;
 
@@ -85,6 +87,10 @@
             background: var(--body-background);
             color: var(--body-text);
         }
+
+        .animate body {
+            transition: var(--fast) background-color;
+        }
     </style>
     <script>
         const enable = () => {
@@ -122,10 +128,10 @@
     <meta name="twitter:description" content="Blazing fast live mapping solution for Paper and friends">
     <meta name="twitter:image" content="https://raw.githubusercontent.com/BillyGalbreath/Pl3xMap/v2/webmap/public/images/og.png">
     <link rel="manifest" href="{{asset('manifest.json')}}">
-    <link rel="shortcut icon" type="image/png" href="{{asset('favicon-192.png')}}"/>
-    <link rel="shortcut icon" sizes="192x192" href="{{asset('favicon-192.png')}}"/>
-    <link rel="apple-touch-icon" href="{{asset('favicon-192.png')}}"/>
-    <link rel="mask-icon" href="{{asset('favicon-192.png')}}"/>
+    <link rel="shortcut icon" type="image/png" href="{{asset('images/favicon-192.png')}}"/>
+    <link rel="shortcut icon" sizes="192x192" href="{{asset('images/favicon-192.png')}}"/>
+    <link rel="apple-touch-icon" href="{{asset('images/favicon-192.png')}}"/>
+    <link rel="mask-icon" href="{{asset('images/favicon-192.png')}}"/>
     <meta name="msapplication-TileColor" content="#aa3d1e"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta name="theme-color" content="#000000"/>
