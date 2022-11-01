@@ -13,7 +13,7 @@
                     <img src="/images/moon.svg" alt="Dark Mode" class="moon"/>
                 </button>
             </li>
-            <li class="github" v-if="!loggedIn">
+            <li class="github" v-if="!user">
                 <a :href="route('login')">
                     <button class='btn-github'>
                         <img src="/images/github.svg" alt="GitHub Logo"/>
@@ -21,10 +21,25 @@
                     </button>
                 </a>
             </li>
-            <li class="github" v-if="loggedIn">
-                <Link :href="route('logout')" method="post" as="button" class='btn-github'>
-                    <span>Log out</span>
-                </Link>
+            <li class="github" v-if="user">
+                <img :src="`${user.avatar}`" :alt="`${user.realname}'s Avatar`" class="avatar"/>
+                <img src="/images/down.svg" alt="Open Dropdown" class="arrow"/>
+                <div class="dropdown no-select">
+                    <a>
+                        @{{ user.username }}
+                        <br/>
+                        {{ user.realname }}
+                    </a>
+                    <hr/>
+                    <a>Create Addon</a>
+                    <hr/>
+                    <a>Settings</a>
+                    <a>Theme</a>
+                    <hr/>
+                    <Link :href="route('logout')" method="post" as="button">
+                        <span>Log out</span>
+                    </Link>
+                </div>
             </li>
             <li class="hamburger">
                 <button @click="this.$emit('openDrawer')" aria-label="open drawer">
@@ -61,7 +76,8 @@ li:first-child {
 }
 
 .github {
-    padding-right: 0;
+    position: relative;
+    padding: 0 0 0 10px;
 }
 
 .btn-github {
@@ -103,23 +119,69 @@ li:first-child {
     box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
-.btn-logout {
-    background: #ffffff;
-    color: var(--nav-btn-color);
-    border: 2px solid var(--primary);
-    padding: 6px 10px;
-    border-radius: 4px;
-    font-family: "Poppins", serif;
-    cursor: pointer;
-    font-size: 1rem;
-    margin-left: 20px;
-}
-
 .avatar {
     width: 32px;
     height: 32px;
     border-radius: 16px;
     margin-right: 10px;
+}
+
+.arrow {
+    width: 16px;
+    margin-left: 5px;
+    transition: var(--fast);
+}
+
+.darkmode .arrow {
+    filter: invert();
+}
+
+.dropdown {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 9999;
+    padding: 12px;
+    background-color: var(--nav-dropdown-background);
+    border: 1px solid var(--nav-dropdown-border);
+    border-radius: 10px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: 100ms ease-in-out opacity;
+}
+
+.dropdown hr {
+    margin: 10px 0;
+    border: 0;
+    border-bottom: 1px solid var(--nav-dropdown-border);
+}
+
+.dropdown a,
+.dropdown button {
+    display: block;
+    width: 100%;
+    text-align: left;
+    background-color: transparent;
+    color: var(--nav-dropdown-color);
+    border: 0;
+    border-radius: 5px;
+    padding: 5px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    font-weight: normal;
+    line-height: 1rem;
+}
+
+.dropdown a:hover,
+.dropdown button:hover {
+    background-color: var(--nav-dropdown-background-hover);
+}
+
+.github:hover .dropdown {
+    opacity: 0.9;
+    pointer-events: auto;
 }
 
 #dark-mode-toggle {
@@ -209,19 +271,7 @@ li.hamburger button img {
 import {computed} from "vue";
 import {usePage} from "@inertiajs/inertia-vue3";
 
-const loggedIn = computed(() => {
+const user = computed(() => {
     return usePage().props.value.auth.user;
 });
-
-setTimeout(() => {
-    document.documentElement.classList.add('animate');
-    document.getElementById('dark-mode-toggle')
-        .addEventListener('click', () => {
-            if (isEnabled()) {
-                disable();
-            } else {
-                enable();
-            }
-        });
-}, 100);
 </script>

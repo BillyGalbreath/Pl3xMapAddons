@@ -20,7 +20,7 @@
     </div>
 </template>
 
-<style>
+<style scoped>
 .tokens {
     background-color: #ffffff;
     background: var(--addon-background);
@@ -41,5 +41,10 @@
     margin: 20px auto;
     padding: 20px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.animate .tokens,
+.animate .token {
+    transition: var(--fast);
 }
 </style>

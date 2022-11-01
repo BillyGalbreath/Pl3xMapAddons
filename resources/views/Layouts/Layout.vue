@@ -61,6 +61,7 @@
 
 .container {
     display: flex;
+    align-items: flex-start;
 }
 
 .no-select {
@@ -149,13 +150,9 @@ footer .content div {
 </style>
 
 <script setup>
-import {usePage} from "@inertiajs/inertia-vue3";
-import {computed} from "vue";
 import Logo from "../Components/Logo.vue";
 import Navigation from "../Components/Navigation.vue";
 import Drawer from "../Components/Drawer.vue";
-
-const username = computed(() => usePage().props.value.auth.user.username);
 
 defineProps({
     darkMode: Boolean,

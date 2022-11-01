@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\Api\AddonsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,3 +17,16 @@ use Illuminate\Support\Facades\Route;
 //Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //    return $request->user();
 //});
+
+Route::controller(AddonsController::class)->group(function () {
+    Route::get('/addons', 'index');
+    Route::get('/addons/{id}', 'show');
+
+    Route::middleware('auth:sanctum')->group(function () {
+        Route::post('/addons', 'store');
+        Route::patch('/addons/{id}', 'update');
+        Route::delete('/addons/{id}', 'destroy');
+    });
+});
+
+//Route::apiResource('addons', AddonsController::class);

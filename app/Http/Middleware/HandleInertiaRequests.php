@@ -41,6 +41,7 @@ class HandleInertiaRequests extends Middleware {
                     'username' => $request->user()->username,
                     'realname' => $request->user()->realname,
                     'email' => $request->user()->email,
+                    'avatar' => $request->user()->github_avatar,
                 ] : null
             ],
             'ziggy' => function () use ($request) {

@@ -42,6 +42,11 @@
 
             --nav-btn-color: var(--primary);
 
+            --nav-dropdown-background: var(--whiter);
+            --nav-dropdown-border: var(--white);
+            --nav-dropdown-color: var(--darker);
+            --nav-dropdown-background-hover: var(--white);
+
             --sidebar-background: var(--whitest);
             --sidebar-border: var(--white);
             --sidebar-text: var(--light);
@@ -74,6 +79,11 @@
 
             --nav-btn-color: var(--primary);
 
+            --nav-dropdown-background: var(--darkest);
+            --nav-dropdown-border: var(--lighter);
+            --nav-dropdown-color: var(--white);
+            --nav-dropdown-background-hover: var(--dark);
+
             --sidebar-background: var(--darker);
             --sidebar-border: var(--lighter);
             --sidebar-text: var(--lightest);
@@ -94,23 +104,43 @@
         }
     </style>
     <script>
-        const enable = () => {
-            document.documentElement.classList.add('darkmode');
-            localStorage.setItem('darkmode', 'enabled');
+        class DarkMode {
+            toggle() {
+                if (this.isEnabled()) {
+                    this.disable();
+                } else {
+                    this.enable();
+                }
+            }
+
+            enable() {
+                document.documentElement.classList.add('darkmode');
+                localStorage.setItem('darkmode', 'enabled');
+            }
+
+            disable() {
+                document.documentElement.classList.remove('darkmode');
+                localStorage.setItem('darkmode', 'disabled');
+            }
+
+            isEnabled() {
+                return localStorage.getItem('darkmode') !== 'disabled';
+            }
         }
 
-        const disable = () => {
-            document.documentElement.classList.remove('darkmode');
-            localStorage.setItem('darkmode', 'disabled');
+        const _darkmode = new DarkMode();
+
+        if (_darkmode.isEnabled()) {
+            _darkmode.enable();
         }
 
-        const isEnabled = () => {
-            return localStorage.getItem('darkmode') !== 'disabled';
-        }
-
-        if (isEnabled()) {
-            enable();
-        }
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.documentElement.classList.add('animate');
+                document.getElementById('dark-mode-toggle')
+                    .addEventListener('click', () => _darkmode.toggle());
+            }, 100);
+        });
     </script>
     <meta name="description" content="Blazing fast live mapping solution for Paper and friends"/>
     <meta name="keywords" content="minecraft, map, dynamic, pl3x, pl3xmap"/>

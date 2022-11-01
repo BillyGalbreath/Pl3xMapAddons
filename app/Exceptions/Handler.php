@@ -3,7 +3,9 @@
 namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Http\Request;
 use Psr\Log\LogLevel;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Throwable;
 
 class Handler extends ExceptionHandler {
@@ -42,8 +44,24 @@ class Handler extends ExceptionHandler {
      * @return void
      */
     public function register(): void {
-        $this->reportable(function (Throwable $e) {
-            //
+        $this->renderable(function (NotFoundHttpException $e, $request) {
+            if ($request->is('api/*')) {
+                return response()->json([
+                    'message' => 'Record not found.'
+                ], 404);
+            }
+            return null;
         });
+    }
+
+    /**
+     * Determine if the exception handler response should be JSON.
+     *
+     * @param Request $request
+     * @param Throwable $e
+     * @return bool
+     */
+    protected function shouldReturnJson($request, Throwable $e): bool {
+        return $request->is('api/*');
     }
 }

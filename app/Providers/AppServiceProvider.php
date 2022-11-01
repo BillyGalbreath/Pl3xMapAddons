@@ -21,6 +21,7 @@ class AppServiceProvider extends ServiceProvider {
      * @return void
      */
     public function boot(): void {
+        Model::shouldBeStrict(!$this->app->isProduction());
         Model::unguard();
     }
 }

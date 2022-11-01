@@ -33,6 +33,7 @@ class AuthController extends Controller {
             'realname' => $github->name,
             'email' => $github->email,
             'github_id' => $github->id,
+            'github_avatar' => $github->avatar,
             'github_token' => $github->token,
             'github_refresh_token' => $github->refreshToken
         ]);

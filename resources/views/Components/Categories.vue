@@ -27,6 +27,9 @@
 
 <style scoped>
 div {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 20px;
     min-width: 250px;
     margin: 20px 20px 20px 0;
     padding: 20px;
@@ -53,6 +56,7 @@ p:first-child {
 @media (max-width: 800px) {
     div {
         width: 100%;
+        position: revert;
     }
 }
 </style>
