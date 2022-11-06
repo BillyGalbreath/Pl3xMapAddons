@@ -35,8 +35,8 @@ section div.nowrap {
 }
 
 img {
-    width: 100px;
-    height: 100px;
+    max-width: 100px;
+    max-height: 100px;
     margin-right: 20px;
     border-radius: 5px;
 }

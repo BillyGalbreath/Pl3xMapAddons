@@ -101,6 +101,7 @@ li:first-child {
 
 .btn-github img {
     padding: 3px 5px 4px 0;
+    width: 26px;
     height: 26px;
     filter: invert();
 }
